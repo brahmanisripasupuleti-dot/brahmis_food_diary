@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Brahmi's Food Diary</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff5f6;
+    color: #333;
+}
+
+/* LOGIN PAGE */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    padding: 35px 25px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.logo {
+    font-size: 55px;
+}
+
+.login-box h1 {
+    color: #b45f68;
+    margin: 10px 0;
+}
+
+.login-box p {
+    color: #777;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 15px;
+}
+
+button {
+    border: none;
+    padding: 13px 25px;
+    border-radius: 25px;
+    background: #d98c96;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #bd6d78;
+}
+
+.error {
+    color: #d9534f;
+}
+
+/* DASHBOARD */
+.dashboard {
+    display: none;
+    min-height: 100vh;
+}
+
+/* TOP BAR */
+.header {
+    background: white;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px #ddd;
+}
+
+.header h2 {
+    margin: 0;
+    color: #b45f68;
+}
+
+/* PROFILE */
+.profile {
+    text-align: center;
+    padding: 35px 20px;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    border-radius: 50%;
+    background: #ffe0e4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+}
+
+.profile h1 {
+    margin-bottom: 5px;
+    color: #9f505a;
+}
+
+/* CARDS */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px #ddd;
+}
+
+.card .icon {
+    font-size: 35px;
+}
+
+.card h3 {
+    margin: 10px 0;
+    color: #9f505a;
+}
+
+.number {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* SECTIONS */
+.section {
+    background: white;
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px #ddd;
+}
+
+.section h2 {
+    color: #9f505a;
+}
+
+.blog-button {
+    display: inline-block;
+    text-decoration: none;
+    background: #d98c96;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 25px;
+    margin-top: 10px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN PAGE -->
+<div class="login-page" id="loginPage">
+
+    <div class="login-box">
+
+        <div class="logo">🍴</div>
+
+        <h1>Brahmi's Food Diary</h1>
+
+        <p>Food Blogger Dashboard 📖</p>
+
+        <input
+            type="text"
+            id="username"
+            placeholder="Username"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+        >
+
+        <button onclick="login()">Login</button>
+
+        <p class="error" id="error"></p>
+
+    </div>
+
+</div>
+
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard">
+
+    <!-- HEADER -->
+    <div class="header">
+
+        <h2>🍴 Brahmi's Food Diary</h2>
+
+        <button onclick="logout()">Logout</button>
+
+    </div>
+
+
+    <!-- PROFILE -->
+    <div class="profile">
+
+        <div class="profile-pic">
+            👩🏻‍🍳
+        </div>
+
+        <h1>Brahmi</h1>
+
+        <p>Food Blogger • Food Lover • Food Explorer 🌷</p>
+
+    </div>
+
+
+    <div class="container">
+
+        <!-- STATISTICS -->
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">📝</div>
+                <h3>Blog Posts</h3>
+                <div class="number">1</div>
+            </div>
+
+            <div class="card">
+                <div class="icon">🍴</div>
+                <h3>Food Reviews</h3>
+                <div class="number">0</div>
+            </div>
+
+            <div class="card">
+                <div class="icon">☕</div>
+                <h3>Café Finds</h3>
+                <div class="number">0</div>
+            </div>
+
+            <div class="card">
+                <div class="icon">📖</div>
+                <h3>Food Stories</h3>
+                <div class="number">1</div>
+            </div>
+
+        </div>
+
+
+        <!-- ABOUT -->
+        <div class="section">
+
+            <h2>🌸 About Me</h2>
+
+            <p>
+                Hi! I'm Brahmi, a food lover and blogger.
+                I enjoy discovering new flavours, cafés,
+                restaurants, street food and beautiful food stories.
+            </p>
+
+        </div>
+
+
+        <!-- BLOG -->
+        <div class="section">
+
+            <h2>📖 My Food Blog</h2>
+
+            <p>
+                Welcome to my little food diary where every
+                bite has a story and every meal creates a memory. ❤️
+            </p>
+
+            <a
+                class="blog-button"
+                href="https://foodbrahmni.blogspot.com/"
+                target="_blank"
+            >
+                Visit My Blog 🍕
+            </a>
+
+        </div>
+
+
+        <!-- CONTENT -->
+        <div class="section">
+
+            <h2>🍰 My Content</h2>
+
+            <p>🍜 Food Reviews</p>
+            <p>☕ Café Discoveries</p>
+            <p>🍰 Desserts</p>
+            <p>🌮 Street Food</p>
+            <p>🏠 Homemade Food</p>
+            <p>💰 Budget Food Finds</p>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+        One bite at a time. One story at a time. ✨
+        <br><br>
+        © 2026 Brahmi's Food Diary
+    </footer>
+
+</div>
+
+
+<script>
+
+/* DEMO LOGIN
+   Username: brahmi
+   Password: food123
+*/
+
+function login() {
+
+    let username =
+        document.getElementById("username").value;
+
+    let password =
+        document.getElementById("password").value;
+
+    if (username === "brahmi" && password === "food123") {
+
+        document.getElementById("loginPage").style.display = "none";
+
+        document.getElementById("dashboard").style.display = "block";
+
+    } else {
+
+        document.getElementById("error").innerText =
+            "Incorrect username or password.";
+
+    }
+}
+
+
+function logout() {
+
+    document.getElementById("dashboard").style.display = "none";
+
+    document.getElementById("loginPage").style.display = "flex";
+
+    document.getElementById("username").value = "";
+
+    document.getElementById("password").value = "";
+
+}
+
+</script>
+
+</body>
+</html>
